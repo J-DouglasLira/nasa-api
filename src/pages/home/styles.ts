@@ -1,16 +1,14 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  border: 1px solid black;
   height: 100vh;
-  background: cyan;
+  background: ${({ theme }) => ` ${theme.colors.primary.backGroundColor}`};
   .header {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0px;
     gap: 16px;
-    border: 1px solid black;
   }
   .app-logo {
     display: flex;
@@ -43,5 +41,36 @@ export const Container = styled.div`
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-fill-color: transparent;
+  }
+  .searchContainer {
+    display: flex;
+    width: 505px;
+    align-items: center;
+    border: 2px solid rgba(209, 213, 219, 0.7);
+    padding: 16px 24px;
+    filter: drop-shadow(0px 1.57895px 3.15789px rgba(0, 0, 0, 0.05));
+    border-radius: 33.1579px;
+    input {
+      border: none;
+      background: none;
+      width: calc(100% - 25px);
+      font-size: 24px;
+      outline: none;
+      color: #ffffff;
+      ::placeholder {
+        color: #d1d5db;
+      }
+    }
+    button {
+      background: transparent;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      img {
+        width: 35px;
+        height: 25px;
+        filter: invert(1);
+      }
+    }
   }
 `;
