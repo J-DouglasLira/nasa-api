@@ -1,14 +1,27 @@
 import { Container } from "./styles"
+import NasaIcon from "../../assets/nasa-icon.svg"
 
 function Home() {
 
   return (
     <Container>
-      <h1>Hello</h1>
+      <div className="header">
+        <div className="app-logo">
+          <div>
+            <img src={NasaIcon} alt="Nasa Icon" />          
+          </div>
+          <div className="title">
+            NASA Search
+          </div>
+        </div>
+        <div className="subtitle">
+          Find Something Amazing in our vast file library!
+        </div>
+        <div className="search">
+          Origin
+        </div>
+      </div>
     </Container>
-    
-
-   
   )
 }
 
