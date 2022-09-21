@@ -11,7 +11,7 @@ function Home() {
       <div className="header">
         <div className="app-logo">
           <div>
-            <img src={NasaIcon} alt="Nasa Icon" />          
+            <img src={NasaIcon} alt="This figure shows the Icon of Nasa" />          
           </div>
           <div className="title">
             NASA Search
@@ -21,15 +21,13 @@ function Home() {
           Find Something Amazing in our vast file library!
         </div>
         <div className="searchContainer">
-            <input type="text" placeholder="Orion"/> 
+            <input type="text" placeholder="Orion" alt=" here you type what you want to search"/> 
             <button >
-              <img src={LupaIcon} alt="Nasa Icon"  /> 
-            </button> 
-                     
+              <img src={LupaIcon} alt="Click Here to Search what you want"  /> 
+            </button>     
         </div>
       </div>
       <div className="results">
-
       </div>
     </Container>
   )

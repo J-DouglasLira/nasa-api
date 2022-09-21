@@ -3,6 +3,7 @@ import { createBrowserHistory } from 'history';
 import Home from '../pages/home';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../styles/theme';
+import Details from '../pages/details';
 
 
 
@@ -14,6 +15,9 @@ const AuthorizedRoutes: React.FC = () => {
       <Switch>
         <Route exact path='/'>
           <Home/>
+        </Route>
+        <Route exact path='/details'>
+          <Details/>
         </Route>
       </Switch>
     </Router>
