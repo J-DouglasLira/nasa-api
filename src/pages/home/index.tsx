@@ -1,10 +1,11 @@
+import { Div } from "./styles"
 
 function Home() {
 
   return (
-    <div>
-      Hello World
-    </div>
+      <Div>
+        <h1>Hello World</h1> 
+      </Div>
   )
 }
 
