@@ -9,12 +9,9 @@ import { queryClient } from '../services/queryClient';
 import {ReactQueryDevtools} from '@tanstack/react-query-devtools';
 
 
-
-
 const AuthorizedRoutes: React.FC = () => {
   const history = createBrowserHistory({ basename: '/home' });
   return (
-    
     <ThemeProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
       <Router history={history}>
@@ -22,7 +19,7 @@ const AuthorizedRoutes: React.FC = () => {
         <Route exact path='/'>
           <Home/>
         </Route>
-        <Route exact path='/details'>
+        <Route exact path='/nasaphoto'>
           <Details/>
         </Route>
       </Switch>
