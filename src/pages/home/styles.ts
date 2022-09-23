@@ -15,6 +15,7 @@ export const Container = styled.div`
     flex-direction: row;
     align-items: center;
     gap: 4px;
+    margin-top: 20px;
   }
   .title {
     font-family: "Inter";
@@ -48,6 +49,7 @@ export const Container = styled.div`
     align-items: center;
     border: 2px solid rgba(209, 213, 219, 0.7);
     padding: 16px 24px;
+    margin-top: 20px;
     filter: drop-shadow(0px 1.57895px 3.15789px rgba(0, 0, 0, 0.05));
     border-radius: 33.1579px;
     input {
@@ -72,5 +74,35 @@ export const Container = styled.div`
         filter: invert(1);
       }
     }
+  }
+  .results {
+    display: flex;
+    width: calc(100vw - 100px);
+    margin: 50px 50px;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    border-bottom: 1px solid #ffffff;
+    .controls {
+      font-family: "Inter";
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 36px;
+      line-height: 100%;
+    }
+  }
+`;
+
+export const ImgContainer = styled.section`
+  display: grid;
+  width: 100%;
+  margin-top: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: stretch;
+  grid-auto-rows: minmax(202px, auto);
+  grid-gap: 25px;
+  .img-container {
+    width: 300px;
+    background: #d9d9d9;
   }
 `;
