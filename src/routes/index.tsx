@@ -1,33 +1,16 @@
-import {Route, Router, Switch } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from '../pages/home';
-import { ThemeProvider } from 'styled-components';
-import { theme } from '../styles/theme';
-import Details from '../pages/details';
-import { QueryClientProvider } from '@tanstack/react-query';
-import { queryClient } from '../services/queryClient';
-import {ReactQueryDevtools} from '@tanstack/react-query-devtools';
 
-
-const AuthorizedRoutes: React.FC = () => {
-  const history = createBrowserHistory({ basename: '/home' });
+const Routing: React.FC = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <QueryClientProvider client={queryClient}>
-      <Router history={history}>
-      <Switch>
-        <Route exact path='/'>
-          <Home/>
-        </Route>
-        <Route exact path='/nasaphoto'>
-          <Details/>
-        </Route>
-      </Switch>
-    </Router>
-    <ReactQueryDevtools initialIsOpen={false} />
-    </QueryClientProvider>
-    </ThemeProvider>
-  )
-}
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/search/:query" element={<Home />} />
+        <Route path="*" element={<div>Not found</div>} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
-export default AuthorizedRoutes;
+export default Routing;
