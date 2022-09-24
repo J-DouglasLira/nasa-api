@@ -128,9 +128,9 @@ export const SectionResults = styled.section`
 `;
 
 export const Galery = styled.section`
-  display: grid;
-  grid-template-columns: 1fr 10fr 1fr;
-
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   .results {
     display: flex;
     flex-direction: row;
@@ -138,14 +138,12 @@ export const Galery = styled.section`
     align-items: center;
     padding: 20px 0;
     border-bottom: 1px solid ${({ theme }) => theme.colors.primary.three + '80'};
-
     .controls {
       font-family: 'Inter';
       color: ${({ theme }) => theme.colors.tertiary.one};
       font-weight: 300;
       font-size: 25px;
       line-height: 100%;
-
       & > span {
         font-weight: 500;
       }
@@ -175,4 +173,28 @@ export const ImageBackground = styled.img`
   height: 100%;
   z-index: -1;
   object-fit: cover;
+`;
+
+export const ImagemContainer = styled.div`
+  margin-top: 150px;
+  display: grid;
+  grid-template-columns: repeat(5, 0.3fr);
+  grid-column-gap: 150px;
+  grid-row-gap: 50px;
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    text-align: center;
+    cursor: pointer;
+    .img {
+      width: 100%;
+    }
+    h1 {
+      color: #ffffff;
+    }
+  }
+  .fileSize {
+    color: #d1d5db;
+    font-size: 22px;
+  }
 `;

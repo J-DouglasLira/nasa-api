@@ -2,9 +2,10 @@ import { SyntheticEvent, useEffect, useState } from 'react';
 import Background from '../../assets/background.svg';
 import LupaIcon from '../../assets/lupa-icon.svg';
 import NasaIcon from '../../assets/nasa-icon.svg';
+import NasaIMG from '../../assets/nasaIMG.png';
 import { ISearch } from '../../interfaces/INasaAPI';
 import NasaService from '../../services/NasaService';
-import { Container, Galery, ImageBackground, ImgContainer, SectionResults } from './styles';
+import { Container, Galery, ImageBackground, ImagemContainer, SectionResults } from './styles';
 
 function Home() {
   const initialValue = 'orion';
@@ -74,18 +75,44 @@ function Home() {
         <div />
       </SectionResults>
       <Galery>
-        <ImgContainer>
-          {data?.collection?.items.map((item: any, key: number) => (
+        <ImagemContainer>
+          <Card></Card>
+          <Card></Card>
+          <Card></Card>
+          <Card></Card>
+          <Card></Card>
+          <Card></Card>
+          <Card></Card>
+          <Card></Card>
+          <Card></Card>
+          <Card></Card>
+
+          {/* data?.collection?.items.map((item: any, key: number) => (
             <div key={key} className="img-container">
               {item?.links.map((link: any, key: number) => (
                 <img key={link.href} src={link.href} alt="" />
               ))}
             </div>
-          ))}
-        </ImgContainer>
+          ))*/}
+        </ImagemContainer>
       </Galery>
     </Container>
   );
 }
 
 export default Home;
+
+function Card() {
+  return (
+    <div
+      className="card"
+      onClick={() => {
+        window.location.href = `/search/:query/`;
+      }}
+    >
+      <img src={NasaIMG} alt="" />
+      <h1>Infrared Spotlight on Orion Sword</h1>
+      <p className="fileSize">185 MB · 14 minutes ago</p>
+    </div>
+  );
+}
