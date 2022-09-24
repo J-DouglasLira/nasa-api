@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   height: 100vh;
@@ -17,7 +17,7 @@ export const Container = styled.div`
     gap: 4px;
   }
   .title {
-    font-family: "Inter";
+    font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
     font-size: 36px;
@@ -25,17 +25,13 @@ export const Container = styled.div`
     color: #ffffff;
   }
   .subtitle {
-    font-family: "Inter";
+    font-family: 'Inter';
     font-style: normal;
     font-weight: 800;
     font-size: 60px;
     line-height: 60px;
     text-align: center;
-    background: linear-gradient(
-        0deg,
-        rgba(255, 255, 255, 0.56),
-        rgba(255, 255, 255, 0.56)
-      ),
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.56), rgba(255, 255, 255, 0.56)),
       linear-gradient(45deg, #14affc 0%, #7f23f7 48.96%, #fc19ad 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

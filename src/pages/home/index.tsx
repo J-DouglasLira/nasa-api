@@ -107,7 +107,7 @@ function Card() {
     <div
       className="card"
       onClick={() => {
-        window.location.href = `/search/:query/`;
+        window.location.href = `/search/:query`;
       }}
     >
       <img src={NasaIMG} alt="" />
