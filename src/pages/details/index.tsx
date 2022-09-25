@@ -11,7 +11,9 @@ import {
   Stack,
   Text
 } from '@chakra-ui/react';
+import Background from '../../assets/background.svg';
 import { NasaFile } from '../../types/nasaFile';
+import { ImageBackground } from '../home/styles';
 import { Content, Header, Information } from './styles';
 
 function Details() {
@@ -26,6 +28,7 @@ function Details() {
 
   return (
     <Content>
+      <ImageBackground src={Background} alt="Background" />
       <Stack spacing={8}>
         <Header>
           <HStack px={8} borderBottomWidth="1px">
@@ -67,7 +70,7 @@ function Details() {
             </Flex>
           </HStack>
         </Header>
-
+        ;
         <Content>
           {/* Content */}
           <Box w="full" px={8}>

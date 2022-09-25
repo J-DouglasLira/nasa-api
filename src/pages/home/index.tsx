@@ -3,40 +3,28 @@ import Background from '../../assets/background.svg';
 import LupaIcon from '../../assets/lupa-icon.svg';
 import NasaIcon from '../../assets/nasa-icon.svg';
 import NasaIMG from '../../assets/nasaIMG.png';
+import { useImagesQuery } from '../../hooks';
 import { ISearch } from '../../interfaces/INasaAPI';
-import NasaService from '../../services/NasaService';
 import { Container, Galery, ImageBackground, ImagemContainer, SectionResults } from './styles';
 
 function Home() {
-  const initialValue = 'orion';
-
   const [data, setData] = useState<ISearch>({} as ISearch);
-  const [searchText, setSearchText] = useState(initialValue);
+  const [searchText, setSearchText] = useState('');
   const result = 10000000;
 
+  const { data: queryData, refetch } = useImagesQuery({ q: searchText });
+  console.log(queryData);
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     const target = e.target as typeof e.target & {
       search: { value: string };
     };
-
-    handleSearch(target.search.value);
+    setSearchText(target.search.value);
   };
-
-  const handleSearch = async (search: string) => {
-    try {
-      const response = await new NasaService().search(search);
-      setData(response);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const handleChange = (e: any) => setSearchText(e.target.value);
 
   useEffect(() => {
-    handleSearch(initialValue);
-  }, []);
+    refetch();
+  }, [searchText]);
 
   return (
     <Container>
@@ -56,8 +44,6 @@ function Home() {
             name="search"
             placeholder="Search your image"
             alt=" here you type what you want to search"
-            value={initialValue}
-            onChange={handleChange}
           />
           <button>
             <img src={LupaIcon} alt="Click Here to Search what you want" />
@@ -76,24 +62,13 @@ function Home() {
       </SectionResults>
       <Galery>
         <ImagemContainer>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-
-          {/* data?.collection?.items.map((item: any, key: number) => (
+          {queryData?.collection?.items?.map((item: any, key: number) => (
             <div key={key} className="img-container">
-              {item?.links.map((link: any, key: number) => (
+              {item?.links?.map((link: any, key: number) => (
                 <img key={link.href} src={link.href} alt="" />
               ))}
             </div>
-          ))*/}
+          ))}
         </ImagemContainer>
       </Galery>
     </Container>
@@ -102,7 +77,7 @@ function Home() {
 
 export default Home;
 
-function Card() {
+function Card(children: any) {
   return (
     <div
       className="card"
@@ -111,6 +86,7 @@ function Card() {
       }}
     >
       <img src={NasaIMG} alt="" />
+      {children}
       <h1>Infrared Spotlight on Orion Sword</h1>
       <p className="fileSize">185 MB · 14 minutes ago</p>
     </div>
