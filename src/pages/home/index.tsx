@@ -2,18 +2,14 @@ import { SyntheticEvent, useEffect, useState } from 'react';
 import Background from '../../assets/background.svg';
 import LupaIcon from '../../assets/lupa-icon.svg';
 import NasaIcon from '../../assets/nasa-icon.svg';
-import NasaIMG from '../../assets/nasaIMG.png';
 import { useImagesQuery } from '../../hooks';
-import { ISearch } from '../../interfaces/INasaAPI';
 import { Container, Galery, ImageBackground, ImagemContainer, SectionResults } from './styles';
 
 function Home() {
-  const [data, setData] = useState<ISearch>({} as ISearch);
   const [searchText, setSearchText] = useState('');
   const result = 10000000;
 
   const { data: queryData, refetch } = useImagesQuery({ q: searchText });
-  console.log(queryData);
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     const target = e.target as typeof e.target & {
@@ -62,11 +58,23 @@ function Home() {
       </SectionResults>
       <Galery>
         <ImagemContainer>
-          {queryData?.collection?.items?.map((item: any, key: number) => (
-            <div key={key} className="img-container">
-              {item?.links?.map((link: any, key: number) => (
-                <img key={link.href} src={link.href} alt="" />
-              ))}
+          {queryData?.collection?.items.map((item: any, index: number) => (
+            <div
+              key={index}
+              className="card"
+              onClick={() => {
+                window.location.href = `/search/:query`;
+              }}
+            >
+              <>
+                <img
+                  key={index}
+                  src={item?.links?.find((link: any) => link?.render === 'image')?.href}
+                  alt=""
+                />
+                <h1>{item?.data[0]?.title}</h1>
+                <p className="fileSize">185 MB · 14 minutes ago</p>
+              </>
             </div>
           ))}
         </ImagemContainer>
@@ -76,19 +84,3 @@ function Home() {
 }
 
 export default Home;
-
-function Card(children: any) {
-  return (
-    <div
-      className="card"
-      onClick={() => {
-        window.location.href = `/search/:query`;
-      }}
-    >
-      <img src={NasaIMG} alt="" />
-      {children}
-      <h1>Infrared Spotlight on Orion Sword</h1>
-      <p className="fileSize">185 MB · 14 minutes ago</p>
-    </div>
-  );
-}

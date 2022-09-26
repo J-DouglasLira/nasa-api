@@ -176,18 +176,18 @@ export const ImageBackground = styled.img`
 `;
 
 export const ImagemContainer = styled.div`
-  margin-top: 150px;
+  margin-top: 50px;
   display: grid;
-  grid-template-columns: repeat(5, 0.3fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-column-gap: 150px;
-  grid-row-gap: 50px;
+  grid-row-gap: 30px;
   .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 300px;
     text-align: center;
     cursor: pointer;
-    .img {
-      width: 100%;
+    img {
+      max-width: 300px;
     }
     h1 {
       color: #ffffff;
