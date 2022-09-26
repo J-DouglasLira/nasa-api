@@ -1,6 +1,6 @@
 import { Button, Flex, Heading, HStack, IconButton, Stack, Text } from '@chakra-ui/react';
+import { Header } from '../../../pages/details/styles';
 import { NasaFile } from '../../../types/nasaFile';
-import { Headers } from './styles';
 
 const Head = () => {
   const file: NasaFile = {
@@ -12,7 +12,7 @@ const Head = () => {
   const createdBy = 'NASA';
   const description = 'description text';
   return (
-    <Headers>
+    <Header>
       <HStack px={8} borderBottomWidth="1px">
         <HStack flex={1}>
           <Stack spacing={0} flex={1}>
@@ -27,8 +27,7 @@ const Head = () => {
         <Flex direction="row">
           <Button
             alignSelf="center"
-            variant="primary"
-            //leadingIcon={<DownloadIconSolid />}
+            variant="primary" //leadingIcon={<DownloadIconSolid />}
           >
             Download
           </Button>
@@ -39,8 +38,7 @@ const Head = () => {
               }}
               aria-label="Close"
               variant="ghost"
-              isRound={true}
-              //icon={<XIconOutline boxSize={6} />}
+              isRound={true} //icon={<XIconOutline boxSize={6} />}
               size="sm"
               boxSize={8}
               p={1}
@@ -51,7 +49,7 @@ const Head = () => {
           </Flex>
         </Flex>
       </HStack>
-    </Headers>
+    </Header>
   );
 };
 

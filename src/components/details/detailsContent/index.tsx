@@ -1,9 +1,8 @@
-import { Box, Stack, Text } from '@chakra-ui/react';
+import { Box, Divider, Heading, HStack, Stack, Text } from '@chakra-ui/react';
 import { NasaFile } from '../../../types/nasaFile';
-import { Information } from "./styles"
+import { Information } from './styles';
 
 const DetailsContent = () => {
-
   const file: NasaFile = {
     id: 'apollo',
     name: 'Apollo taking off',
@@ -13,40 +12,43 @@ const DetailsContent = () => {
   const createdBy = 'NASA';
   const description = 'description text';
   return (
-  <Stack spacing={2}>
-    <Box rounded="lg" overflow="hidden" boxSize="full">
-      <Information>
-        <Heading fontSize="md" fontWeight="medium">
-          Information
-        </Heading>
-        <Box as="dl">
-          <Divider />
-          <HStack justify="space-between" fontSize="sm" fontWeight="medium" py={3}>
-            <Text as="dt" variant="supporting">
-              Created by
-            </Text>
-            <Box as="dd">{createdBy}</Box>
-          </HStack>
-          <Divider />
-          <HStack justify="space-between" fontSize="sm" fontWeight="medium" py={3}>
-            <Text as="dt" variant="supporting">
-              Date created
-            </Text>
-            <Box as="dd">teste</Box>
-          </HStack>
+    <>
+      <Stack spacing={2}>
+        <Box rounded="lg" overflow="hidden" boxSize="full">
+          <Information>
+            <Heading fontSize="md" fontWeight="medium">
+              Information
+            </Heading>
+            <Box as="dl">
+              <Divider />
+              <HStack justify="space-between" fontSize="sm" fontWeight="medium" py={3}>
+                <Text as="dt" variant="supporting">
+                  Created by
+                </Text>
+                <Box as="dd">createdBy</Box>
+              </HStack>
+              <Divider />
+              <HStack justify="space-between" fontSize="sm" fontWeight="medium" py={3}>
+                <Text as="dt" variant="supporting">
+                  Date created
+                </Text>
+                <Box as="dd">teste</Box>
+              </HStack>
+            </Box>
+          </Information>
         </Box>
-      </Information>
-    </Box>
-  </Stack>
+      </Stack>
 
-  <Stack spacing={2}>
-    <Information>
-      <Heading fontSize="md" fontWeight="medium">
-        Description
-      </Heading>
-      <Text fontSize="sm">{description}</Text>
-    </Information>
-  </Stack>)
-}
+      <Stack spacing={2}>
+        <Information>
+          <Heading fontSize="md" fontWeight="medium">
+            Description
+          </Heading>
+          <Text fontSize="sm">description</Text>
+        </Information>
+      </Stack>
+    </>
+  );
+};
 
 export default DetailsContent;

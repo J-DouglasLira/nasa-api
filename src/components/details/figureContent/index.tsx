@@ -1,6 +1,5 @@
-import { Box, Center, Image, Stack } from '@chakra-ui/react';
+import { Box, Center, Image } from '@chakra-ui/react';
 import { NasaFile } from '../../../types/nasaFile';
-import { Content } from './styles';
 
 const FigureContent = () => {
   const file: NasaFile = {
@@ -13,18 +12,11 @@ const FigureContent = () => {
   const description = 'description text';
 
   return (
-    <Content>
-      {/* Content */}
-      <Box w="full" px={8}>
-        <Stack spacing={6} maxW="4xl" mx="auto">
-          <Center p="20">
-            <Box rounded="lg" overflow="hidden" boxSize="full">
-              <Image src={file.src} alt="Filename" boxSize="max-content" objectFit="cover" />
-            </Box>
-          </Center>
-        </Stack>
+    <Center p="20">
+      <Box rounded="lg" overflow="hidden" boxSize="full">
+        <Image src={file.src} alt="Filename" boxSize="max-content" objectFit="cover" />
       </Box>
-    </Content>
+    </Center>
   );
 };
 

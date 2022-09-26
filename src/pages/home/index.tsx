@@ -7,9 +7,10 @@ import { Container, Galery, ImageBackground, ImagemContainer, SectionResults } f
 
 function Home() {
   const [searchText, setSearchText] = useState('');
-  const result = 10000000;
+  let result = 10000;
 
   const { data: queryData, refetch } = useImagesQuery({ q: searchText });
+
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     const target = e.target as typeof e.target & {
