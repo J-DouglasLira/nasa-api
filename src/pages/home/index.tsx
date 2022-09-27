@@ -1,8 +1,9 @@
 import { SyntheticEvent, useEffect, useState } from 'react';
+import background from '../../assets/background.svg';
 import LupaIcon from '../../assets/lupa-icon.svg';
 import NasaIcon from '../../assets/nasa-icon.svg';
 import { useImagesQuery } from '../../hooks';
-import { Container, Galery, ImagemContainer, SectionResults } from './styles';
+import { Container, Galery, ImageBackground, ImagemContainer, SectionResults } from './styles';
 
 function Home() {
   const [searchText, setSearchText] = useState('');
@@ -29,6 +30,7 @@ function Home() {
 
   return (
     <Container>
+      <ImageBackground src={background} alt="Background" />
       <div className="header">
         <div className="app-logo">
           <div>
@@ -60,7 +62,6 @@ function Home() {
         </div>
         <div />
       </SectionResults>
-      <hr />
       <Galery>
         <ImagemContainer>
           {queryData?.collection?.items.map((item: any, index: number) => (
@@ -92,9 +93,3 @@ function Home() {
 }
 
 export default Home;
-
-/* 
-
- 
-
-*/

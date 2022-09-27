@@ -4,7 +4,7 @@ export const Container = styled.div`
   height: 100%;
   border: 1px solid black;
   background: transparent;
-  background-image: linear-gradient(to top, #335fee, #4b5fe8, #5b5fe2, #685fdd, #725fd7);
+  //background-image: linear-gradient(to top, #335fee, #4b5fe8, #5b5fe2, #685fdd, #725fd7);
   .header {
     display: flex;
     flex-direction: column;
@@ -34,7 +34,6 @@ export const Container = styled.div`
     font-style: normal;
     font-weight: 800;
     font-size: 60px;
-    line-height: 60px;
     text-align: center;
   }
 
@@ -109,21 +108,20 @@ export const SectionResults = styled.section`
     justify-content: space-between;
     align-items: center;
     padding: 20px 0;
-    // border-bottom: 1px solid ${({ theme }) => theme.colors.primary.three + '80'};
-    hr {
-      width: 0.7em;
-      background-color: rgba(255, 255, 255, 0.12);
-      height: 1px;
-      border: 0;
-      margin-top: 16px;
-    }
+    border-bottom: 1px solid ${({ theme }) => theme.colors.primary.three + '80'};
+    // hr {
+    //  width: 0.7em;
+    //  background-color: rgba(255, 255, 255, 0.12);
+    //  height: 1px;
+    //   border: 0;
+    //   margin-top: 16px;
+    // }
     .controls {
       font-family: 'Inter';
       color: ${({ theme }) => theme.colors.tertiary.one};
       font-weight: 300;
       font-size: 25px;
       line-height: 100%;
-
       & > span {
         font-weight: 500;
       }
@@ -138,7 +136,7 @@ export const SectionResults = styled.section`
 `;
 
 export const Galery = styled.section`
-  background-image: linear-gradient(to top, #335fee, #4b5fe8, #5b5fe2, #685fdd, #725fd7);
+  //background-image: linear-gradient(to top, #335fee, #4b5fe8, #5b5fe2, #685fdd, #725fd7);
   .results {
     display: flex;
     flex-direction: row;
