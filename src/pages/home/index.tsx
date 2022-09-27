@@ -7,8 +7,13 @@ import { Container, Galery, ImagemContainer, SectionResults } from './styles';
 function Home() {
   const [searchText, setSearchText] = useState('');
   let result = 10000;
+  const media_type = 'image';
 
-  const { data: queryData, refetch } = useImagesQuery({ q: searchText });
+  const { data: queryData, refetch } = useImagesQuery({
+    q: searchText,
+    media_type
+  });
+  console.log(queryData);
 
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
@@ -53,7 +58,6 @@ function Home() {
           </div>
           <div className="about">About {result} results</div>
         </div>
-
         <div />
       </SectionResults>
       <hr />
@@ -75,8 +79,9 @@ function Home() {
                 />
               </div>
               <div className="text-container">
-                <h1>{item?.data[0]?.title}</h1>
-                <p className="fileSize">185 MB · 14 minutes ago</p>
+                <h1>Title: {item?.data[0]?.title}</h1>
+                <h3 className="location">Location: {item?.data[0]?.location}</h3>
+                <h4 className="photographer">Photographer's name: {item?.data[0]?.photographer}</h4>
               </div>
             </div>
           ))}

@@ -189,7 +189,6 @@ export const ImagemContainer = styled.div`
   gap: 20px;
   margin: 40px;
   display: grid;
-
   .card {
     border-radius: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -207,6 +206,11 @@ export const ImagemContainer = styled.div`
     h1 {
       color: #ffffff;
     }
+  }
+  .text-container {
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
   }
   .fileSize {
     color: #d1d5db;
