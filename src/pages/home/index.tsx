@@ -1,9 +1,8 @@
 import { SyntheticEvent, useEffect, useState } from 'react';
-import Background from '../../assets/background.svg';
 import LupaIcon from '../../assets/lupa-icon.svg';
 import NasaIcon from '../../assets/nasa-icon.svg';
 import { useImagesQuery } from '../../hooks';
-import { Container, Galery, ImageBackground, ImagemContainer, SectionResults } from './styles';
+import { Container, Galery, ImagemContainer, SectionResults } from './styles';
 
 function Home() {
   const [searchText, setSearchText] = useState('');
@@ -25,7 +24,6 @@ function Home() {
 
   return (
     <Container>
-      <ImageBackground src={Background} alt="Background" />
       <div className="header">
         <div className="app-logo">
           <div>
@@ -55,27 +53,31 @@ function Home() {
           </div>
           <div className="about">About {result} results</div>
         </div>
+
         <div />
       </SectionResults>
+      <hr />
       <Galery>
         <ImagemContainer>
           {queryData?.collection?.items.map((item: any, index: number) => (
             <div
-              key={index}
+              key={item.href}
               className="card"
               onClick={() => {
-                window.location.href = `/search/:query`;
+                window.location.href = `/search/${index}`;
               }}
             >
-              <>
+              <div className="img-container">
                 <img
-                  key={index}
+                  key={item.href}
                   src={item?.links?.find((link: any) => link?.render === 'image')?.href}
                   alt=""
                 />
+              </div>
+              <div className="text-container">
                 <h1>{item?.data[0]?.title}</h1>
                 <p className="fileSize">185 MB · 14 minutes ago</p>
-              </>
+              </div>
             </div>
           ))}
         </ImagemContainer>
@@ -85,3 +87,9 @@ function Home() {
 }
 
 export default Home;
+
+/* 
+
+ 
+
+*/

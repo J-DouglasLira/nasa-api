@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  height: 100vh;
+  height: 100%;
+  border: 1px solid black;
   background: transparent;
-
+  background-image: linear-gradient(to top, #335fee, #4b5fe8, #5b5fe2, #685fdd, #725fd7);
   .header {
     display: flex;
     flex-direction: column;
@@ -60,6 +61,10 @@ export const Container = styled.div`
   }
 
   .searchContainer {
+    .testando {
+      border: 1px solid black;
+      font-size: 500px;
+    }
     display: flex;
     width: 505px;
     align-items: center;
@@ -98,15 +103,20 @@ export const Container = styled.div`
 export const SectionResults = styled.section`
   display: grid;
   grid-template-columns: 1fr 10fr 1fr;
-
   .results {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 20px 0;
-    border-bottom: 1px solid ${({ theme }) => theme.colors.primary.three + '80'};
-
+    // border-bottom: 1px solid ${({ theme }) => theme.colors.primary.three + '80'};
+    hr {
+      width: 0.7em;
+      background-color: rgba(255, 255, 255, 0.12);
+      height: 1px;
+      border: 0;
+      margin-top: 16px;
+    }
     .controls {
       font-family: 'Inter';
       color: ${({ theme }) => theme.colors.tertiary.one};
@@ -128,9 +138,7 @@ export const SectionResults = styled.section`
 `;
 
 export const Galery = styled.section`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  background-image: linear-gradient(to top, #335fee, #4b5fe8, #5b5fe2, #685fdd, #725fd7);
   .results {
     display: flex;
     flex-direction: row;
@@ -176,18 +184,25 @@ export const ImageBackground = styled.img`
 `;
 
 export const ImagemContainer = styled.div`
-  margin-top: 50px;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-column-gap: 150px;
-  grid-row-gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 20px;
+  margin: 40px;
+  display: grid;
+
   .card {
+    border-radius: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 300px;
+    width: 300px;
+    height: 400px;
+    border: 1px solid black;
     text-align: center;
     cursor: pointer;
     img {
-      max-width: 300px;
+      border-radius: 20px 20px 0px 0px;
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
     }
     h1 {
       color: #ffffff;
