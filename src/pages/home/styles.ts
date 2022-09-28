@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   height: 100%;
-  border: 1px solid black;
   background: transparent;
   //background-image: linear-gradient(to top, #335fee, #4b5fe8, #5b5fe2, #685fdd, #725fd7);
   .header {
@@ -136,7 +135,6 @@ export const SectionResults = styled.section`
 `;
 
 export const Galery = styled.section`
-  //background-image: linear-gradient(to top, #335fee, #4b5fe8, #5b5fe2, #685fdd, #725fd7);
   .results {
     display: flex;
     flex-direction: row;
@@ -161,7 +159,7 @@ export const ImgContainer = styled.section`
   display: grid;
   width: 100%;
   margin-top: 20px;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   align-items: stretch;
   grid-auto-rows: minmax(202px, auto);
   grid-gap: 25px;
@@ -185,7 +183,7 @@ export const ImagemContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
   gap: 20px;
-  margin: 40px;
+  margin: 30px 150px 0px 220px;
   display: grid;
   .card {
     border-radius: 20px;
@@ -193,8 +191,13 @@ export const ImagemContainer = styled.div`
     width: 300px;
     height: 400px;
     border: 1px solid black;
-    text-align: center;
     cursor: pointer;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #ffffff;
     img {
       border-radius: 20px 20px 0px 0px;
       width: 300px;

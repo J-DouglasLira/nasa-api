@@ -1,7 +1,11 @@
 import { Box, Center, Image } from '@chakra-ui/react';
 import { NasaFile } from '../../../types/nasaFile';
 
-const FigureContent = () => {
+type Props = {
+  imgSrc: string;
+};
+
+const FigureContent = ({ imgSrc }: Props) => {
   const file: NasaFile = {
     id: 'apollo',
     name: 'Apollo taking off',
@@ -14,7 +18,7 @@ const FigureContent = () => {
   return (
     <Center p="20">
       <Box rounded="lg" overflow="hidden" boxSize="full">
-        <Image src={file.src} alt="Filename" boxSize="max-content" objectFit="cover" />
+        <Image src={imgSrc} alt="Filename" boxSize="max-content" objectFit="cover" />
       </Box>
     </Center>
   );

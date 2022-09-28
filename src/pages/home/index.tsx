@@ -1,4 +1,5 @@
 import { SyntheticEvent, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import background from '../../assets/background.svg';
 import LupaIcon from '../../assets/lupa-icon.svg';
 import NasaIcon from '../../assets/nasa-icon.svg';
@@ -65,26 +66,24 @@ function Home() {
       <Galery>
         <ImagemContainer>
           {queryData?.collection?.items.map((item: any, index: number) => (
-            <div
-              key={item.href}
-              className="card"
-              onClick={() => {
-                window.location.href = `/search/${index}`;
-              }}
-            >
-              <div className="img-container">
-                <img
-                  key={item.href}
-                  src={item?.links?.find((link: any) => link?.render === 'image')?.href}
-                  alt=""
-                />
+            <Link to={`/search/${index}`} key={item.href} state={{ data: item }}>
+              <div className="card">
+                <div className="img-container">
+                  <img
+                    key={item.href}
+                    src={item?.links?.find((link: any) => link?.render === 'image')?.href}
+                    alt=""
+                  />
+                </div>
+                <div className="text-container">
+                  <h1>Title: {item?.data[0]?.title}</h1>
+                  <h3 className="location">Location: {item?.data[0]?.location}</h3>
+                  <h4 className="photographer">
+                    Photographer's name: {item?.data[0]?.photographer}
+                  </h4>
+                </div>
               </div>
-              <div className="text-container">
-                <h1>Title: {item?.data[0]?.title}</h1>
-                <h3 className="location">Location: {item?.data[0]?.location}</h3>
-                <h4 className="photographer">Photographer's name: {item?.data[0]?.photographer}</h4>
-              </div>
-            </div>
+            </Link>
           ))}
         </ImagemContainer>
       </Galery>

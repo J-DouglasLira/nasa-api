@@ -1,4 +1,5 @@
 import { Box, Stack } from '@chakra-ui/react';
+import { useLocation } from 'react-router-dom';
 import Background from '../../assets/background.svg';
 import DetailsContent from '../../components/details/detailsContent';
 import FigureContent from '../../components/details/figureContent';
@@ -17,6 +18,16 @@ function Details() {
   const createdBy = 'NASA';
   const description = 'description text';
 
+  const {
+    state: {
+      data: { data, links }
+    }
+  } = useLocation();
+
+  if (links) {
+    console.log(links[0].href);
+  }
+
   return (
     <Content>
       <ImageBackground src={Background} alt="Background" />
@@ -25,7 +36,7 @@ function Details() {
         <Content>
           <Box w="full" px={8}>
             <Stack spacing={6} maxW="4xl" mx="auto">
-              <FigureContent />
+              <FigureContent imgSrc={links[0].href} />
               <DetailsContent />
             </Stack>
           </Box>
