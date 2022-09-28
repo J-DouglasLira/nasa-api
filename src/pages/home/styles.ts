@@ -59,10 +59,6 @@ export const Container = styled.div`
   }
 
   .searchContainer {
-    .testando {
-      border: 1px solid black;
-      font-size: 500px;
-    }
     display: flex;
     width: 505px;
     align-items: center;
@@ -70,8 +66,7 @@ export const Container = styled.div`
     padding: 16px 24px;
     margin-top: 50px;
     filter: drop-shadow(0px 1.57895px 3.15789px rgba(0, 0, 0, 0.05));
-    border-radius: 33.1579px;
-
+    border-radius: 33px;
     input {
       border: none;
       background: none;
@@ -108,13 +103,7 @@ export const SectionResults = styled.section`
     align-items: center;
     padding: 20px 0;
     border-bottom: 1px solid ${({ theme }) => theme.colors.primary.three + '80'};
-    // hr {
-    //  width: 0.7em;
-    //  background-color: rgba(255, 255, 255, 0.12);
-    //  height: 1px;
-    //   border: 0;
-    //   margin-top: 16px;
-    // }
+
     .controls {
       font-family: 'Inter';
       color: ${({ theme }) => theme.colors.tertiary.one};
@@ -185,12 +174,13 @@ export const ImagemContainer = styled.div`
   gap: 20px;
   margin: 30px 150px 0px 220px;
   display: grid;
+  a {
+    text-decoration: none;
+  }
   .card {
     border-radius: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     width: 300px;
     height: 400px;
-    border: 1px solid black;
     cursor: pointer;
     font-family: 'Inter';
     font-style: normal;
@@ -199,7 +189,7 @@ export const ImagemContainer = styled.div`
     line-height: 20px;
     color: #ffffff;
     img {
-      border-radius: 20px 20px 0px 0px;
+      border-radius: 20px;
       width: 300px;
       height: 200px;
       object-fit: cover;

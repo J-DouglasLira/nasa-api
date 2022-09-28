@@ -1,7 +1,23 @@
 import { Box, Divider, Heading, HStack, Stack, Text } from '@chakra-ui/react';
 import { Information } from './styles';
 
-const DetailsContent = () => {
+type Props = {
+  data: [
+    {
+      center: string;
+      date_created: string;
+      description: string;
+      keywords: [string];
+      location: string;
+      media_type: string;
+      nasa_id: string;
+      photographer: string;
+      title: string;
+    }
+  ];
+};
+
+const DetailsContent = ({ data }: Props) => {
   return (
     <>
       <Stack spacing={2}>
@@ -21,7 +37,7 @@ const DetailsContent = () => {
               <Divider />
               <HStack justify="space-between" fontSize="sm" fontWeight="medium" py={3}>
                 <Text as="dt" variant="supporting">
-                  Date created
+                  {data[0].media_type}
                 </Text>
                 <Box as="dd">teste</Box>
               </HStack>
@@ -35,7 +51,7 @@ const DetailsContent = () => {
           <Heading fontSize="md" fontWeight="medium">
             Description
           </Heading>
-          <Text fontSize="sm">description</Text>
+          <Text fontSize="sm">{data[0].description}</Text>
         </Information>
       </Stack>
     </>
