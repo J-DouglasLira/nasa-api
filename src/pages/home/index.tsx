@@ -16,15 +16,10 @@ type FormValues = {
 
 function Home() {
   const [searchText, setSearchText] = useState('');
-  let result = 10000;
   const media_type = 'image';
   const [yearStart, setYearStart] = useState('');
   const [yearEnd, setYearEnd] = useState('');
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm<FormValues>();
+  const { register, handleSubmit } = useForm<FormValues>();
 
   const { data: queryData, refetch } = useImagesQuery({
     q: searchText,
@@ -90,7 +85,6 @@ function Home() {
           <div className="controls">
             Results for:〝<span>{searchText}</span>〞
           </div>
-          <div className="about">About {result} results</div>
         </div>
         <div />
       </SectionResults>
