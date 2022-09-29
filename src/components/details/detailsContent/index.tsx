@@ -1,23 +1,8 @@
 import { Box, Divider, Heading, HStack, Stack, Text } from '@chakra-ui/react';
+import { IData } from '../../../interfaces/IData';
 import { Information } from './styles';
 
-type Props = {
-  data: [
-    {
-      center: string;
-      date_created: string;
-      description: string;
-      keywords: [string];
-      location: string;
-      media_type: string;
-      nasa_id: string;
-      photographer: string;
-      title: string;
-    }
-  ];
-};
-
-const DetailsContent = ({ data }: Props) => {
+const DetailsContent = ({ data }: IData) => {
   return (
     <>
       <Stack spacing={2}>

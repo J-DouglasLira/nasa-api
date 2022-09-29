@@ -2,17 +2,15 @@ import { Stack } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import background from '../../assets/background.svg';
 import LupaIcon from '../../assets/lupa-icon.svg';
 import { useImagesQuery } from '../../hooks';
+import { IFormValues } from '../../interfaces/IFormValues';
 import AppLogoContainer from './homeHeader/HomeHader';
 import {
   CardContainer,
-  Container,
   Controls,
   Galery,
   Header,
-  ImageBackground,
   ImagemContainer,
   Results,
   SearchFormContainer,
@@ -20,18 +18,12 @@ import {
   TextContainer
 } from './styles';
 
-type FormValues = {
-  search: string;
-  yearStart: string;
-  yearEnd: string;
-};
-
 function Home() {
   const [searchText, setSearchText] = useState('');
   const media_type = 'image';
   const [yearStart, setYearStart] = useState('');
   const [yearEnd, setYearEnd] = useState('');
-  const { register, handleSubmit } = useForm<FormValues>();
+  const { register, handleSubmit } = useForm<IFormValues>();
 
   const { data: queryData, refetch } = useImagesQuery({
     q: searchText,
@@ -51,8 +43,7 @@ function Home() {
   }, [searchText]);
 
   return (
-    <Container>
-      <ImageBackground src={background} alt="Background" />
+    <>
       <Header>
         <AppLogoContainer />
         <SearchFormContainer onSubmit={submitForm}>
@@ -117,7 +108,7 @@ function Home() {
           ))}
         </ImagemContainer>
       </Galery>
-    </Container>
+    </>
   );
 }
 
