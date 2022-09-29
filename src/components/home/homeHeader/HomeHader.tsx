@@ -1,4 +1,4 @@
-import NasaIcon from '../../assets/nasa-icon.svg';
+import NasaIcon from '../../../assets/nasa-icon.svg';
 import { AppLogo, Subtitle1, Subtitle2, Title } from './styles';
 
 const AppLogoContainer = () => {

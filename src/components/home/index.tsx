@@ -4,8 +4,8 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import background from '../../assets/background.svg';
 import LupaIcon from '../../assets/lupa-icon.svg';
-import AppLogoContainer from '../../components/home/HomeHader';
 import { useImagesQuery } from '../../hooks';
+import AppLogoContainer from './homeHeader/HomeHader';
 import {
   CardContainer,
   Container,

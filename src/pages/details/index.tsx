@@ -4,8 +4,7 @@ import Background from '../../assets/background.svg';
 import DetailsContent from '../../components/details/detailsContent';
 import FigureContent from '../../components/details/figureContent';
 import Head from '../../components/details/header';
-import { ImageBackground } from '../home/styles';
-import { Content } from './styles';
+import { Content, ImageBackground } from './styles';
 
 function Details() {
   const {
@@ -13,10 +12,6 @@ function Details() {
       data: { data, links }
     }
   } = useLocation();
-
-  if (data) {
-    console.log(data[0]);
-  }
 
   return (
     <Content>
