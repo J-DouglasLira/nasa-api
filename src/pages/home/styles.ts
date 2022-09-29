@@ -2,14 +2,15 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   height: 100%;
-  background: transparent;
-  //background-image: linear-gradient(to top, #335fee, #4b5fe8, #5b5fe2, #685fdd, #725fd7);
   .header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0px;
-    gap: 16px;
+    justify-content: center;
+    height: 100vh;
+    background: url('../../../public/background.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   .app-logo {
@@ -27,6 +28,7 @@ export const Container = styled.div`
     line-height: 100%;
     color: ${({ theme }) => theme.colors.tertiary.one};
   }
+
   .subtitle-1,
   .subtitle-2 {
     font-family: 'Inter';
@@ -91,18 +93,69 @@ export const Container = styled.div`
       }
     }
   }
+
+  @media (max-width: 768px) {
+    .title {
+      font-weight: 300;
+      font-size: 40px;
+    }
+    .subtitle-1 {
+      font-size: 40px;
+      line-height: 2;
+    }
+    .subtitle-2 {
+      font-size: 40px;
+    }
+    .searchContainer {
+      width: 95vw;
+      margin-bottom: 150px;
+      input {
+        font-size: 25px;
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    .subtitle-1 {
+      font-size: 30px;
+    }
+    .subtitle-2 {
+      font-size: 30px;
+    }
+    .searchContainer {
+      width: 95vw;
+      input {
+        font-size: 22px;
+      }
+    }
+  }
+
+  @media (max-width: 515px) {
+    .subtitle-1 {
+      font-size: 30px;
+    }
+    .subtitle-2 {
+      font-size: 30px;
+    }
+    .searchContainer {
+      input {
+        font-size: 15px;
+      }
+    }
+  }
 `;
 
 export const SectionResults = styled.section`
-  display: grid;
-  grid-template-columns: 1fr 10fr 1fr;
+  position: relative;
   .results {
+    position: absolute;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
+    padding: 50px;
     border-bottom: 1px solid ${({ theme }) => theme.colors.primary.three + '80'};
+    width: 100%;
+    top: -200px;
 
     .controls {
       font-family: 'Inter';
@@ -121,9 +174,34 @@ export const SectionResults = styled.section`
       font-size: 14px;
     }
   }
+
+  @media (max-width: 768px) {
+    .results {
+      padding: 15px;
+      .controls {
+        font-size: 20px;
+        & > span {
+          font-weight: 400;
+        }
+      }
+      .about {
+        font-weight: 200;
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+  }
+
+  @media (max-width: 515px) {
+  }
 `;
 
 export const Galery = styled.section`
+  background: url('../../../public/background.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+
   .results {
     display: flex;
     flex-direction: row;
@@ -171,15 +249,18 @@ export const ImageBackground = styled.img`
 export const ImagemContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-  gap: 20px;
-  margin: 30px 150px 0px 220px;
-  display: grid;
+  gap: 90px;
+  justify-items: center;
+  align-items: center;
+  margin: 0px 30px 0px 40px;
+
   a {
     text-decoration: none;
   }
+
   .card {
     border-radius: 20px;
-    width: 300px;
+    width: 320px;
     height: 400px;
     cursor: pointer;
     font-family: 'Inter';
@@ -187,21 +268,37 @@ export const ImagemContainer = styled.div`
     font-weight: 500;
     font-size: 14px;
     line-height: 20px;
-    color: #ffffff;
+    color: #d1d5db;
+    transition: all 0.3s;
+    margin-top: 20px;
+
+    &:hover {
+      transition: all 0.3s;
+      transform: scale(1.05);
+    }
+
     img {
       border-radius: 20px;
-      width: 300px;
+      width: 320px;
       height: 200px;
       object-fit: cover;
     }
-    h1 {
-      color: #ffffff;
+    h3 {
+      color: #f3f3f3;
+      text-shadow: #140b0b 1px 0 1px;
     }
   }
+
   .text-container {
     width: 300px;
     height: 200px;
     overflow: hidden;
+    padding: 20px;
+    text-align: left;
+
+    p {
+      padding-top: 15px;
+    }
   }
   .fileSize {
     color: #d1d5db;

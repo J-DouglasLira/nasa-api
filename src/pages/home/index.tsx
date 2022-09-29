@@ -1,3 +1,4 @@
+import { Input, Stack } from '@chakra-ui/react';
 import { SyntheticEvent, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import background from '../../assets/background.svg';
@@ -10,12 +11,15 @@ function Home() {
   const [searchText, setSearchText] = useState('');
   let result = 10000;
   const media_type = 'image';
+  const [yearStart, setYearStart] = useState();
+  const [yearEnd, setYearEnd] = useState();
 
   const { data: queryData, refetch } = useImagesQuery({
     q: searchText,
+    year_start: yearStart,
+    year_end: yearEnd,
     media_type
   });
-  console.log(queryData);
 
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
@@ -23,7 +27,12 @@ function Home() {
       search: { value: string };
     };
     setSearchText(target.search.value);
+    '' + yearStart;
+    '' + yearEnd;
   };
+
+  const handleYearStart = (event: any) => '' + setYearStart(event.target.value);
+  const handleYearEnd = (event: any) => '' + setYearEnd(event.target.value);
 
   useEffect(() => {
     refetch();
@@ -46,8 +55,17 @@ function Home() {
             type="text"
             name="search"
             placeholder="Search your image"
-            alt=" here you type what you want to search"
+            alt="here you type what you want to search"
           />
+          <Stack spacing={4}>
+            <Input
+              variant="yearStart"
+              placeholder="Year Start"
+              width="auto"
+              onChange={handleYearStart}
+            />
+            <Input variant="yearEnd" placeholder="Year End" width="auto" onChange={handleYearEnd} />
+          </Stack>
           <button>
             <img src={LupaIcon} alt="Click Here to Search what you want" />
           </button>
