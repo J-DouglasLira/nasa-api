@@ -22,7 +22,7 @@ function Details() {
     <Content>
       <ImageBackground src={Background} alt="Background" />
       <Stack spacing={8}>
-        <Head />;
+        <Head data={data} />;
         <Content>
           <Box w="full" px={8}>
             <Stack spacing={6} maxW="4xl" mx="auto">
