@@ -1,46 +1,46 @@
-import { SyntheticEvent, useEffect, useState } from 'react';
-import Background from '../../assets/background.svg';
+import { Input, Stack } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
+import background from '../../assets/background.svg';
 import LupaIcon from '../../assets/lupa-icon.svg';
 import NasaIcon from '../../assets/nasa-icon.svg';
-import NasaIMG from '../../assets/nasaIMG.png';
-import { ISearch } from '../../interfaces/INasaAPI';
-import NasaService from '../../services/NasaService';
+import { useImagesQuery } from '../../hooks';
 import { Container, Galery, ImageBackground, ImagemContainer, SectionResults } from './styles';
 
+type FormValues = {
+  search: string;
+  yearStart: string;
+  yearEnd: string;
+};
+
 function Home() {
-  const initialValue = 'orion';
+  const [searchText, setSearchText] = useState('');
+  const media_type = 'image';
+  const [yearStart, setYearStart] = useState('');
+  const [yearEnd, setYearEnd] = useState('');
+  const { register, handleSubmit } = useForm<FormValues>();
 
-  const [data, setData] = useState<ISearch>({} as ISearch);
-  const [searchText, setSearchText] = useState(initialValue);
-  const result = 10000000;
+  const { data: queryData, refetch } = useImagesQuery({
+    q: searchText,
+    year_start: yearStart ? yearStart : undefined,
+    year_end: yearEnd ? yearEnd : undefined,
+    media_type
+  });
 
-  const handleSubmit = async (e: SyntheticEvent) => {
-    e.preventDefault();
-    const target = e.target as typeof e.target & {
-      search: { value: string };
-    };
-
-    handleSearch(target.search.value);
-  };
-
-  const handleSearch = async (search: string) => {
-    try {
-      const response = await new NasaService().search(search);
-      setData(response);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const handleChange = (e: any) => setSearchText(e.target.value);
+  const submitForm = handleSubmit((data) => {
+    setSearchText(data.search);
+    setYearStart(data?.yearStart);
+    setYearEnd(data?.yearEnd);
+  });
 
   useEffect(() => {
-    handleSearch(initialValue);
-  }, []);
+    refetch();
+  }, [searchText]);
 
   return (
     <Container>
-      <ImageBackground src={Background} alt="Background" />
+      <ImageBackground src={background} alt="Background" />
       <div className="header">
         <div className="app-logo">
           <div>
@@ -50,15 +50,30 @@ function Home() {
         </div>
         <div className="subtitle-1">Find Something Amazing </div>
         <div className="subtitle-2">in our vast file library!</div>
-        <form className="searchContainer" onSubmit={handleSubmit}>
+        <form className="searchContainer" onSubmit={submitForm}>
           <input
             type="text"
-            name="search"
+            pattern="^[a-zA-Z]+$"
             placeholder="Search your image"
-            alt=" here you type what you want to search"
-            value={initialValue}
-            onChange={handleChange}
+            alt="here you type what you want to search"
+            {...register('search', { required: true })}
           />
+          <Stack spacing={4}>
+            <Input
+              variant="yearStart"
+              placeholder="Year Start"
+              width="auto"
+              pattern="^[0-9]+$"
+              {...register('yearStart')}
+            />
+            <Input
+              variant="yearEnd"
+              pattern="^[0-9]+$"
+              placeholder="Year End"
+              width="auto"
+              {...register('yearEnd')}
+            />
+          </Stack>
           <button>
             <img src={LupaIcon} alt="Click Here to Search what you want" />
           </button>
@@ -70,30 +85,31 @@ function Home() {
           <div className="controls">
             Results for:〝<span>{searchText}</span>〞
           </div>
-          <div className="about">About {result} results</div>
         </div>
         <div />
       </SectionResults>
       <Galery>
         <ImagemContainer>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-
-          {/* data?.collection?.items.map((item: any, key: number) => (
-            <div key={key} className="img-container">
-              {item?.links.map((link: any, key: number) => (
-                <img key={link.href} src={link.href} alt="" />
-              ))}
-            </div>
-          ))*/}
+          {queryData?.collection?.items.map((item: any, index: number) => (
+            <Link to={`/search/${index}`} key={item.href} state={{ data: item }}>
+              <div className="card">
+                <div className="img-container">
+                  <img
+                    key={item.href}
+                    src={item?.links?.find((link: any) => link?.render === 'image')?.href}
+                    alt=""
+                  />
+                </div>
+                <div className="text-container">
+                  <h1>Title: {item?.data[0]?.title}</h1>
+                  <h3 className="location">Location: {item?.data[0]?.location}</h3>
+                  <h4 className="photographer">
+                    Photographer's name: {item?.data[0]?.photographer}
+                  </h4>
+                </div>
+              </div>
+            </Link>
+          ))}
         </ImagemContainer>
       </Galery>
     </Container>
@@ -101,18 +117,3 @@ function Home() {
 }
 
 export default Home;
-
-function Card() {
-  return (
-    <div
-      className="card"
-      onClick={() => {
-        window.location.href = `/search/:query`;
-      }}
-    >
-      <img src={NasaIMG} alt="" />
-      <h1>Infrared Spotlight on Orion Sword</h1>
-      <p className="fileSize">185 MB · 14 minutes ago</p>
-    </div>
-  );
-}

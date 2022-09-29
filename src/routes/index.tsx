@@ -7,7 +7,7 @@ const Routing: React.FC = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/search/:query" element={<Details />} />
+        <Route path="/search/:id" element={<Details />} />
         <Route path="*" element={<div>Not found</div>} />
       </Routes>
     </BrowserRouter>
