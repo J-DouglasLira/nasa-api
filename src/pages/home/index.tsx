@@ -8,6 +8,7 @@ import NasaIcon from '../../assets/nasa-icon.svg';
 import { useImagesQuery } from '../../hooks';
 import {
   AppLogo,
+  CardContainer,
   Container,
   Controls,
   Galery,
@@ -19,6 +20,7 @@ import {
   SectionResults,
   Subtitle1,
   Subtitle2,
+  TextContainer,
   Title
 } from './styles';
 
@@ -106,22 +108,22 @@ function Home() {
         <ImagemContainer>
           {queryData?.collection?.items.map((item: any, index: number) => (
             <Link to={`/search/${index}`} key={item.href} state={{ data: item }}>
-              <div className="card">
-                <div className="img-container">
+              <CardContainer>
+                <div>
                   <img
                     key={item.href}
                     src={item?.links?.find((link: any) => link?.render === 'image')?.href}
                     alt=""
                   />
                 </div>
-                <div className="text-container">
+                <TextContainer>
                   <h1>Title: {item?.data[0]?.title}</h1>
                   <h3 className="location">Location: {item?.data[0]?.location}</h3>
                   <h4 className="photographer">
                     Photographer's name: {item?.data[0]?.photographer}
                   </h4>
-                </div>
-              </div>
+                </TextContainer>
+              </CardContainer>
             </Link>
           ))}
         </ImagemContainer>

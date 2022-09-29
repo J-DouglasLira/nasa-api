@@ -4,6 +4,16 @@ export const Container = styled.div`
   height: 100%;
 `;
 
+export const ImageBackground = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  object-fit: cover;
+`;
+
 export const Header = styled.div`
   display: flex;
   flex-direction: column;
@@ -220,12 +230,6 @@ export const SectionResults = styled.section`
       }
     }
   }
-
-  @media (max-width: 576px) {
-  }
-
-  @media (max-width: 515px) {
-  }
 `;
 
 export const Galery = styled.section`
@@ -253,30 +257,6 @@ export const Galery = styled.section`
   }
 `;
 
-export const ImgContainer = styled.section`
-  display: grid;
-  width: 100%;
-  margin-top: 20px;
-  grid-template-columns: repeat(3, 1fr);
-  align-items: stretch;
-  grid-auto-rows: minmax(202px, auto);
-  grid-gap: 25px;
-  .img-container {
-    width: 300px;
-    background: #d9d9d9;
-  }
-`;
-
-export const ImageBackground = styled.img`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  object-fit: cover;
-`;
-
 export const ImagemContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
@@ -284,52 +264,50 @@ export const ImagemContainer = styled.div`
   justify-items: center;
   align-items: center;
   margin: 0px 30px 0px 40px;
-
   a {
     text-decoration: none;
   }
+`;
 
-  .card {
-    border-radius: 20px;
-    width: 320px;
-    height: 400px;
-    cursor: pointer;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 20px;
-    color: #d1d5db;
+export const CardContainer = styled.div`
+  border-radius: 20px;
+  width: 320px;
+  height: 400px;
+  cursor: pointer;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #d1d5db;
+  transition: all 0.3s;
+  margin-top: 20px;
+
+  &:hover {
     transition: all 0.3s;
-    margin-top: 20px;
-
-    &:hover {
-      transition: all 0.3s;
-      transform: scale(1.05);
-    }
-
-    img {
-      border-radius: 20px;
-      width: 320px;
-      height: 200px;
-      object-fit: cover;
-    }
-    h3 {
-      color: #f3f3f3;
-      text-shadow: #140b0b 1px 0 1px;
-    }
+    transform: scale(1.05);
   }
 
-  .text-container {
-    width: 300px;
+  img {
+    border-radius: 20px;
+    width: 320px;
     height: 200px;
-    overflow: hidden;
-    padding: 20px;
-    text-align: left;
+    object-fit: cover;
+  }
+  h3 {
+    color: #f3f3f3;
+    text-shadow: #140b0b 1px 0 1px;
+  }
+`;
 
-    p {
-      padding-top: 15px;
-    }
+export const TextContainer = styled.div`
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+  padding: 20px;
+  text-align: left;
+  p {
+    padding-top: 15px;
   }
   .fileSize {
     color: #d1d5db;
