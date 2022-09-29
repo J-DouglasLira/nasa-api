@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const Container = styled.div`
+  height: 100%;
+`;
+
 export const Header = styled.div`
   display: flex;
   flex-direction: column;
@@ -87,138 +91,87 @@ export const Subtitle2 = styled.div`
   }
 `;
 
-export const Container = styled.div`
-  height: 100%;
-
-  .title {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 36px;
-    line-height: 100%;
+export const SearchFormContainer = styled.form`
+  display: flex;
+  width: 505px;
+  align-items: center;
+  border: 2px solid ${({ theme }) => theme.colors.tertiary.two};
+  padding: 16px 24px;
+  margin-top: 50px;
+  filter: drop-shadow(0px 1.57895px 3.15789px rgba(0, 0, 0, 0.05));
+  border-radius: 33px;
+  input {
+    border: none;
+    background: none;
+    width: calc(100% - 25px);
+    font-size: 24px;
+    font-weight: 200;
+    outline: none;
     color: ${({ theme }) => theme.colors.tertiary.one};
-  }
-
-  .subtitle-1,
-  .subtitle-2 {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 800;
-    font-size: 60px;
-    text-align: center;
-  }
-
-  .subtitle-1 {
-    background: linear-gradient(
-        0deg,
-        ${({ theme }) => theme.colors.tertiary.two + '80'},
-        ${({ theme }) => theme.colors.tertiary.two + '80'}
-      ),
-      linear-gradient(
-        45deg,
-        ${({ theme }) => theme.colors.special.one} 0%,
-        ${({ theme }) => theme.colors.special.two} 48.96%,
-        ${({ theme }) => theme.colors.special.three} 100%
-      );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
-  }
-
-  .subtitle-2 {
-    color: ${({ theme }) => theme.colors.tertiary.one};
-  }
-
-  .searchContainer {
-    display: flex;
-    width: 505px;
-    align-items: center;
-    border: 2px solid ${({ theme }) => theme.colors.tertiary.two};
-    padding: 16px 24px;
-    margin-top: 50px;
-    filter: drop-shadow(0px 1.57895px 3.15789px rgba(0, 0, 0, 0.05));
-    border-radius: 33px;
-
-    input {
-      border: none;
-      background: none;
-      width: calc(100% - 25px);
-      font-size: 24px;
-      font-weight: 200;
-      outline: none;
-      color: ${({ theme }) => theme.colors.tertiary.one};
-      ::placeholder {
-        color: ${({ theme }) => theme.colors.tertiary.two};
-      }
-    }
-
-    button {
-      background: transparent;
-      outline: none;
-      border: none;
-      cursor: pointer;
-
-      img {
-        width: 35px;
-        height: 25px;
-      }
+    ::placeholder {
+      color: ${({ theme }) => theme.colors.tertiary.two};
     }
   }
+  button {
+    background: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
 
+    img {
+      width: 35px;
+      height: 25px;
+    }
+  }
   @media (max-width: 768px) {
-    .title {
-      font-weight: 300;
-      font-size: 40px;
-    }
-
-    .subtitle-1 {
-      font-size: 40px;
-      line-height: 2;
-    }
-
-    .subtitle-2 {
-      font-size: 40px;
-    }
-
-    .searchContainer {
-      width: 95vw;
-      margin-bottom: 150px;
-      input {
-        font-size: 25px;
-      }
+    width: 95vw;
+    margin-bottom: 150px;
+    input {
+      font-size: 25px;
     }
   }
 
   @media (max-width: 576px) {
-    .subtitle-1 {
-      font-size: 30px;
-    }
-
-    .subtitle-2 {
-      font-size: 30px;
-    }
-
-    .searchContainer {
-      width: 95vw;
-
-      input {
-        font-size: 22px;
-      }
+    width: 95vw;
+    input {
+      font-size: 22px;
     }
   }
 
   @media (max-width: 515px) {
-    .subtitle-1 {
-      font-size: 30px;
+    input {
+      font-size: 15px;
     }
-    .subtitle-2 {
-      font-size: 30px;
-    }
-    .searchContainer {
-      input {
-        font-size: 15px;
-      }
+  }
+`;
+
+export const Results = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.primary.three + '80'};
+  width: 100%;
+  top: -200px;
+  @media (max-width: 768px) {
+    padding: 15px;
+  }
+`;
+
+export const Controls = styled.div`
+  font-family: 'Inter';
+  color: ${({ theme }) => theme.colors.tertiary.one};
+  font-weight: 300;
+  font-size: 25px;
+  line-height: 100%;
+  & > span {
+    font-weight: 500;
+  }
+  @media (max-width: 768px) {
+    font-size: 20px;
+    & > span {
+      font-weight: 200;
     }
   }
 `;

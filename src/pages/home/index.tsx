@@ -9,10 +9,13 @@ import { useImagesQuery } from '../../hooks';
 import {
   AppLogo,
   Container,
+  Controls,
   Galery,
   Header,
   ImageBackground,
   ImagemContainer,
+  Results,
+  SearchFormContainer,
   SectionResults,
   Subtitle1,
   Subtitle2,
@@ -61,8 +64,7 @@ function Home() {
         </AppLogo>
         <Subtitle1>Find Something Amazing</Subtitle1>
         <Subtitle2>in our vast file library!</Subtitle2>
-        <div className="subtitle-2"></div>
-        <form className="searchContainer" onSubmit={submitForm}>
+        <SearchFormContainer onSubmit={submitForm}>
           <input
             type="text"
             pattern="^[a-zA-Z]+$"
@@ -89,15 +91,15 @@ function Home() {
           <button>
             <img src={LupaIcon} alt="Click Here to Search what you want" />
           </button>
-        </form>
+        </SearchFormContainer>
       </Header>
       <SectionResults>
         <div />
-        <div className="results">
-          <div className="controls">
+        <Results>
+          <Controls>
             Results for:〝<span>{searchText}</span>〞
-          </div>
-        </div>
+          </Controls>
+        </Results>
         <div />
       </SectionResults>
       <Galery>
