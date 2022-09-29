@@ -1,5 +1,6 @@
 import { Input, Stack } from '@chakra-ui/react';
-import { SyntheticEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import background from '../../assets/background.svg';
 import LupaIcon from '../../assets/lupa-icon.svg';
@@ -7,32 +8,36 @@ import NasaIcon from '../../assets/nasa-icon.svg';
 import { useImagesQuery } from '../../hooks';
 import { Container, Galery, ImageBackground, ImagemContainer, SectionResults } from './styles';
 
+type FormValues = {
+  search: string;
+  yearStart: string;
+  yearEnd: string;
+};
+
 function Home() {
   const [searchText, setSearchText] = useState('');
   let result = 10000;
   const media_type = 'image';
-  const [yearStart, setYearStart] = useState();
-  const [yearEnd, setYearEnd] = useState();
+  const [yearStart, setYearStart] = useState('');
+  const [yearEnd, setYearEnd] = useState('');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<FormValues>();
 
   const { data: queryData, refetch } = useImagesQuery({
     q: searchText,
-    year_start: yearStart,
-    year_end: yearEnd,
+    year_start: yearStart ? yearStart : undefined,
+    year_end: yearEnd ? yearEnd : undefined,
     media_type
   });
 
-  const handleSubmit = async (e: SyntheticEvent) => {
-    e.preventDefault();
-    const target = e.target as typeof e.target & {
-      search: { value: string };
-    };
-    setSearchText(target.search.value);
-    '' + yearStart;
-    '' + yearEnd;
-  };
-
-  const handleYearStart = (event: any) => '' + setYearStart(event.target.value);
-  const handleYearEnd = (event: any) => '' + setYearEnd(event.target.value);
+  const submitForm = handleSubmit((data) => {
+    setSearchText(data.search);
+    setYearStart(data?.yearStart);
+    setYearEnd(data?.yearEnd);
+  });
 
   useEffect(() => {
     refetch();
@@ -50,21 +55,29 @@ function Home() {
         </div>
         <div className="subtitle-1">Find Something Amazing </div>
         <div className="subtitle-2">in our vast file library!</div>
-        <form className="searchContainer" onSubmit={handleSubmit}>
+        <form className="searchContainer" onSubmit={submitForm}>
           <input
             type="text"
-            name="search"
+            pattern="^[a-zA-Z]+$"
             placeholder="Search your image"
             alt="here you type what you want to search"
+            {...register('search', { required: true })}
           />
           <Stack spacing={4}>
             <Input
               variant="yearStart"
               placeholder="Year Start"
               width="auto"
-              onChange={handleYearStart}
+              pattern="^[0-9]+$"
+              {...register('yearStart')}
             />
-            <Input variant="yearEnd" placeholder="Year End" width="auto" onChange={handleYearEnd} />
+            <Input
+              variant="yearEnd"
+              pattern="^[0-9]+$"
+              placeholder="Year End"
+              width="auto"
+              {...register('yearEnd')}
+            />
           </Stack>
           <button>
             <img src={LupaIcon} alt="Click Here to Search what you want" />

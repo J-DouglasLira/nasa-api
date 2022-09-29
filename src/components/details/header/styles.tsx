@@ -52,7 +52,17 @@ export const Btn = styled.div`
     left: 0;
     width: 0;
     height: 100%;
-    background: red;
+    background: linear-gradient(
+        0deg,
+        ${({ theme }) => theme.colors.tertiary.two + '80'},
+        ${({ theme }) => theme.colors.tertiary.two + '80'}
+      ),
+      linear-gradient(
+        45deg,
+        ${({ theme }) => theme.colors.special.one} 0%,
+        ${({ theme }) => theme.colors.special.two} 48.96%,
+        ${({ theme }) => theme.colors.special.three} 100%
+      );
     transition: all 0.35s;
   }
 

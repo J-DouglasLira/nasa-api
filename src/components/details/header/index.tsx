@@ -41,7 +41,6 @@ const Head = ({ data }: Props) => {
               </a>
             </div>
           </Btn>
-
           <Flex align="center" borderLeftWidth="1px" ml={8} h={16}></Flex>
         </Flex>
       </HStack>
