@@ -18,6 +18,8 @@ import {
   TextContainer
 } from './styles';
 
+export interface IItem {}
+
 function Home() {
   const [searchText, setSearchText] = useState('');
   const media_type = 'image';
@@ -31,6 +33,8 @@ function Home() {
     year_end: yearEnd ? yearEnd : undefined,
     media_type
   });
+
+  console.log(queryData);
 
   const submitForm = handleSubmit((data) => {
     setSearchText(data.search);
@@ -86,13 +90,13 @@ function Home() {
       </SectionResults>
       <Galery>
         <ImagemContainer>
-          {queryData?.collection?.items.map((item: any, index: number) => (
+          {queryData?.collection?.items.map((item, index: number) => (
             <Link to={`/search/${index}`} key={item.href} state={{ data: item }}>
               <CardContainer>
                 <div>
                   <img
                     key={item.href}
-                    src={item?.links?.find((link: any) => link?.render === 'image')?.href}
+                    src={item?.links?.find((link) => link?.render === 'image')?.href}
                     alt=""
                   />
                 </div>

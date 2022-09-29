@@ -1,9 +1,9 @@
 import { Flex, Heading, HStack, Stack } from '@chakra-ui/react';
-import { IData } from '../../../interfaces/IData';
+import { IAPI } from '../../../interfaces/IAPI';
 
 import { Btn, Header } from './styles';
 
-const Head = ({ data }: IData) => {
+const Head = ({ data }: IAPI.IItem) => {
   return (
     <Header>
       <HStack px={8} borderBottomWidth="1px">

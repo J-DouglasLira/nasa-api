@@ -1,8 +1,8 @@
 import { Box, Divider, Heading, HStack, Stack, Text } from '@chakra-ui/react';
-import { IData } from '../../../interfaces/IData';
+import { IAPI } from '../../../interfaces/IAPI';
 import { Information } from './styles';
 
-const DetailsContent = ({ data }: IData) => {
+const DetailsContent = ({ data }: IAPI.IItem) => {
   return (
     <>
       <Stack spacing={2}>
