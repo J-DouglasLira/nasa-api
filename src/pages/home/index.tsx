@@ -1,13 +1,12 @@
-import { Input, Stack } from '@chakra-ui/react';
+import { Stack } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import background from '../../assets/background.svg';
 import LupaIcon from '../../assets/lupa-icon.svg';
-import NasaIcon from '../../assets/nasa-icon.svg';
+import AppLogoContainer from '../../components/home/HomeHader';
 import { useImagesQuery } from '../../hooks';
 import {
-  AppLogo,
   CardContainer,
   Container,
   Controls,
@@ -18,10 +17,7 @@ import {
   Results,
   SearchFormContainer,
   SectionResults,
-  Subtitle1,
-  Subtitle2,
-  TextContainer,
-  Title
+  TextContainer
 } from './styles';
 
 type FormValues = {
@@ -58,14 +54,7 @@ function Home() {
     <Container>
       <ImageBackground src={background} alt="Background" />
       <Header>
-        <AppLogo>
-          <div>
-            <img src={NasaIcon} alt="This figure shows the Icon of Nasa" />
-          </div>
-          <Title>NASA Search</Title>
-        </AppLogo>
-        <Subtitle1>Find Something Amazing</Subtitle1>
-        <Subtitle2>in our vast file library!</Subtitle2>
+        <AppLogoContainer />
         <SearchFormContainer onSubmit={submitForm}>
           <input
             type="text"
@@ -75,18 +64,18 @@ function Home() {
             {...register('search', { required: true })}
           />
           <Stack spacing={4}>
-            <Input
-              variant="yearStart"
+            <input
               placeholder="Year Start"
               width="auto"
               pattern="^[0-9]+$"
+              alt="here you type the start year of the searched picture"
               {...register('yearStart')}
             />
-            <Input
-              variant="yearEnd"
+            <input
               pattern="^[0-9]+$"
               placeholder="Year End"
               width="auto"
+              alt="here you type the end year of the searched picture"
               {...register('yearEnd')}
             />
           </Stack>
