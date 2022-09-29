@@ -6,7 +6,18 @@ import background from '../../assets/background.svg';
 import LupaIcon from '../../assets/lupa-icon.svg';
 import NasaIcon from '../../assets/nasa-icon.svg';
 import { useImagesQuery } from '../../hooks';
-import { Container, Galery, ImageBackground, ImagemContainer, SectionResults } from './styles';
+import {
+  AppLogo,
+  Container,
+  Galery,
+  Header,
+  ImageBackground,
+  ImagemContainer,
+  SectionResults,
+  Subtitle1,
+  Subtitle2,
+  Title
+} from './styles';
 
 type FormValues = {
   search: string;
@@ -41,15 +52,16 @@ function Home() {
   return (
     <Container>
       <ImageBackground src={background} alt="Background" />
-      <div className="header">
-        <div className="app-logo">
+      <Header>
+        <AppLogo>
           <div>
             <img src={NasaIcon} alt="This figure shows the Icon of Nasa" />
           </div>
-          <div className="title">NASA Search</div>
-        </div>
-        <div className="subtitle-1">Find Something Amazing </div>
-        <div className="subtitle-2">in our vast file library!</div>
+          <Title>NASA Search</Title>
+        </AppLogo>
+        <Subtitle1>Find Something Amazing</Subtitle1>
+        <Subtitle2>in our vast file library!</Subtitle2>
+        <div className="subtitle-2"></div>
         <form className="searchContainer" onSubmit={submitForm}>
           <input
             type="text"
@@ -78,7 +90,7 @@ function Home() {
             <img src={LupaIcon} alt="Click Here to Search what you want" />
           </button>
         </form>
-      </div>
+      </Header>
       <SectionResults>
         <div />
         <div className="results">
