@@ -1,24 +1,9 @@
 import { Flex, Heading, HStack, Stack } from '@chakra-ui/react';
-import { Header } from '../../../pages/details/styles';
-import { Btn } from './styles';
+import { IData } from '../../../interfaces/IData';
 
-type Props = {
-  data: [
-    {
-      center: string;
-      date_created: string;
-      description: string;
-      keywords: [string];
-      location: string;
-      media_type: string;
-      nasa_id: string;
-      photographer: string;
-      title: string;
-    }
-  ];
-};
+import { Btn, Header } from './styles';
 
-const Head = ({ data }: Props) => {
+const Head = ({ data }: IData) => {
   return (
     <Header>
       <HStack px={8} borderBottomWidth="1px">

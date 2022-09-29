@@ -1,14 +1,5 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  background: #312e81;
-`;
-
-export const Content = styled.div`
-  background: #312e81;
-  height: calc(100vh - 80px);
-`;
-
 export const Information = styled.div`
   display: flex;
   justify-content: space-around;
