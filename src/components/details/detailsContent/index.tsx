@@ -1,5 +1,6 @@
 import { Box, Heading, HStack, Text } from '@chakra-ui/react';
 import { IAPI } from '../../../interfaces/IAPI';
+import { InfoUnavailable } from './InfoUnavailable';
 import { Information } from './styles';
 
 const DetailsContent = ({ data }: IAPI.IItem) => {
@@ -10,22 +11,54 @@ const DetailsContent = ({ data }: IAPI.IItem) => {
           More information
         </Heading>
       </Information>
-      <Information>
-        <HStack pt={24} justify="space-between">
-          <Text as="dt" variant="supporting" pr={12}>
-            Created by:
-          </Text>
-          <Text> NASA or National Aeronautics and Space Administration</Text>
-        </HStack>
-      </Information>
+      {data[0]?.location ? (
+        <Information>
+          <HStack pt={24} justify="space-between">
+            <Text as="dd" pr={12}>
+              Location
+            </Text>
+            <Text as="dt" variant="supporting">
+              {data[0].location}
+            </Text>
+          </HStack>
+        </Information>
+      ) : (
+        <InfoUnavailable text={'Location'} />
+      )}
+      {data[0]?.photographer ? (
+        <Information>
+          <HStack pt={24} justify="space-between">
+            <Text as="dt" variant="supporting" pr={12}>
+              Created by:
+            </Text>
+            <Text>{data[0].photographer}</Text>
+          </HStack>
+        </Information>
+      ) : (
+        <InfoUnavailable text={'Created by'} />
+      )}
+      {data[0]?.date_created ? (
+        <Information>
+          <HStack pt={24} justify="space-between">
+            <Text as="dd" pr={12}>
+              Date created:
+            </Text>
+            <Text as="dt" variant="supporting">
+              {data[0]?.date_created}
+            </Text>
+          </HStack>
+        </Information>
+      ) : (
+        <InfoUnavailable text={'Date created:'} />
+      )}
+
       <Information>
         <HStack pt={24} justify="space-between">
           <Text as="dd" pr={12}>
-            Date created:
+            Keywords
           </Text>
-
           <Text as="dt" variant="supporting">
-            asdfas
+            {data[0].keywords.join('-')}
           </Text>
         </HStack>
       </Information>

@@ -34,8 +34,6 @@ function Home() {
     media_type
   });
 
-  console.log(queryData);
-
   const submitForm = handleSubmit((data) => {
     setSearchText(data.search);
     setYearStart(data?.yearStart);
