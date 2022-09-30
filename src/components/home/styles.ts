@@ -170,7 +170,7 @@ export const Galery = styled.section`
 export const ImagemContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-  gap: 90px;
+  gap: 60px;
   justify-items: center;
   align-items: center;
   margin: 0px 30px 0px 40px;
@@ -199,7 +199,7 @@ export const CardContainer = styled.div`
   }
 
   img {
-    border-radius: 20px;
+    border-radius: 8px;
     width: 320px;
     height: 200px;
     object-fit: cover;
@@ -211,7 +211,7 @@ export const CardContainer = styled.div`
 `;
 
 export const TextContainer = styled.div`
-  width: 300px;
+  width: 225px;
   height: 200px;
   overflow: hidden;
   padding: 20px;
@@ -219,6 +219,27 @@ export const TextContainer = styled.div`
   p {
     padding-top: 15px;
   }
+  h1 {
+    font-weight: 500;
+    font-size: 18px;
+    color: #ffffff;
+  }
+  h3 {
+    margin-top: 5px;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 14px;
+    color: #d1d5db;
+  }
+  h4 {
+    margin-top: 5px;
+    font-weight: 500;
+    font-style: normal;
+
+    font-size: 14px;
+    color: #d1d5db;
+  }
+
   .fileSize {
     color: #d1d5db;
     font-size: 22px;
