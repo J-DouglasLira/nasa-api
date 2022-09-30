@@ -100,9 +100,19 @@ function Home() {
                 </div>
                 <TextContainer>
                   <h1>Title: {item?.data[0]?.title}</h1>
-                  <h3 className="location">Location: {item?.data[0]?.location}</h3>
+                  <h3 className="location">
+                    {item?.data[0]?.location && (
+                      <>
+                        {' '}
+                        Location:
+                        {item?.data[0]?.location}
+                      </>
+                    )}
+                  </h3>
                   <h4 className="photographer">
-                    Photographer's name: {item?.data[0]?.photographer}
+                    {item?.data[0]?.photographer && (
+                      <>Photographer's name: {item?.data[0]?.photographer}</>
+                    )}
                   </h4>
                 </TextContainer>
               </CardContainer>
