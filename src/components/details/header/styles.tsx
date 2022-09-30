@@ -20,13 +20,10 @@ export const Information = styled.div`
 `;
 
 export const Btn = styled.div`
-  .wrapper {
-    transform: translate(-50%, -50%);
-  }
   a {
     display: block;
     margin-top: 20px;
-    width: 200px;
+    width: 140px;
     height: 40px;
     line-height: 40px;
     font-size: 18px;
@@ -38,6 +35,8 @@ export const Btn = styled.div`
     text-align: center;
     position: relative;
     transition: all 0.35s;
+    text-transform: uppercase;
+    margin-left: 40px;
   }
 
   a span {

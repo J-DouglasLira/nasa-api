@@ -6,13 +6,27 @@ const GlobalStyle = createGlobalStyle`
     padding: 0px;
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
+    
   }
-  /* body{
-    height: 100%;
-    background-image: linear-gradient(to top, #335fee, #4b5fe8, #5b5fe2, #685fdd, #725fd7);
-    background-repeat: no-repeat;
-    background-size: cover;
-  } */
+  ::-webkit-scrollbar-track{
+    background-color: transparent;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-corner{
+    background-color: transparent;
+    width: 0px;
+    height: 0px;
+    display: none;
+  }
+
+  ::-webkit-scrollbar{
+    width: 3px;
+    height: 5px;
+    background-color: transparent;
+  }
+
+
 `;
 
 export default GlobalStyle;

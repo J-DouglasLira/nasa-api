@@ -1,50 +1,28 @@
-import { Flex, Heading, HStack, Stack } from '@chakra-ui/react';
-import { Header } from '../../../pages/details/styles';
+import { Center, Heading } from '@chakra-ui/react';
+import { IAPI } from '../../../interfaces/IAPI';
+
 import { Btn } from './styles';
 
-type Props = {
-  data: [
-    {
-      center: string;
-      date_created: string;
-      description: string;
-      keywords: [string];
-      location: string;
-      media_type: string;
-      nasa_id: string;
-      photographer: string;
-      title: string;
-    }
-  ];
-};
-
-const Head = ({ data }: Props) => {
+const Head = ({ data }: IAPI.IItem) => {
   return (
-    <Header>
-      <HStack px={8} borderBottomWidth="1px">
-        <HStack flex={1}>
-          <Stack spacing={0} flex={1}>
-            <Heading fontWeight="medium" fontSize="sm" color="#ffffff">
-              {data[0].title}
-            </Heading>
-          </Stack>
-        </HStack>
-        <Flex direction="column-reverse">
-          <Btn
-            onClick={() => {
-              window.location.href = '/';
-            }}
-          >
-            <div className="wrapper">
-              <a href="#">
-                <span>Get Back</span>
-              </a>
-            </div>
-          </Btn>
-          <Flex align="center" borderLeftWidth="1px" ml={8} h={16}></Flex>
-        </Flex>
-      </HStack>
-    </Header>
+    <>
+      <Btn
+        onClick={() => {
+          window.location.href = '/';
+        }}
+      >
+        <div>
+          <a href="#">
+            <span>Back</span>
+          </a>
+        </div>
+      </Btn>
+      <Center>
+        <Heading fontWeight="medium" fontSize="sm" color="#ffffff" pl={30} pt={28}>
+          {data[0].title}
+        </Heading>
+      </Center>
+    </>
   );
 };
 

@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { IAPI } from '../interfaces/IAPI';
 import { IQuerySearch } from '../interfaces/IQuerySearch';
 import { api } from '../services/api';
 
@@ -9,7 +10,7 @@ export const getImages = async (q: IQuerySearch) => {
 };
 
 export const useImagesQuery = (q: IQuerySearch) => {
-  return useQuery(['search'], () => getImages(q), {
+  return useQuery<IAPI.IRootObject>(['search'], () => getImages(q), {
     cacheTime: 60
   });
 };
