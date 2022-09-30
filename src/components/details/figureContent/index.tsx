@@ -8,7 +8,7 @@ const FigureContent = ({ imgSrc }: Props) => {
   return (
     <Center p="20">
       <Box rounded="lg" overflow="hidden" boxSize="full">
-        <Image src={imgSrc} alt="Filename" boxSize="max-content" objectFit="cover" />
+        <Image src={imgSrc} alt="Filename" boxSize="min-width: 400px" objectFit="cover" />
       </Box>
     </Center>
   );

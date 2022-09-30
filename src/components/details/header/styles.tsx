@@ -1,18 +1,29 @@
 import styled from 'styled-components';
 
-export const Header = styled.div`
+export const Container = styled.div`
+  background: #312e81;
+`;
+export const Headers = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.colors.primary.three + '80'};
   height: 75px;
 `;
 
+export const Content = styled.div`
+  background: #312e81;
+  height: calc(100vh - 80px);
+`;
+
+export const Information = styled.div`
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.primary.three + '80'};
+`;
+
 export const Btn = styled.div`
-  .wrapper {
-    transform: translate(-50%, -50%);
-  }
   a {
     display: block;
     margin-top: 20px;
-    width: 200px;
+    width: 140px;
     height: 40px;
     line-height: 40px;
     font-size: 18px;
@@ -24,6 +35,8 @@ export const Btn = styled.div`
     text-align: center;
     position: relative;
     transition: all 0.35s;
+    text-transform: uppercase;
+    margin-left: 40px;
   }
 
   a span {

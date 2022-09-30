@@ -1,44 +1,44 @@
-import { Box, Divider, Heading, HStack, Stack, Text } from '@chakra-ui/react';
+import { Box, Heading, HStack, Text } from '@chakra-ui/react';
 import { IAPI } from '../../../interfaces/IAPI';
 import { Information } from './styles';
 
 const DetailsContent = ({ data }: IAPI.IItem) => {
   return (
     <>
-      <Stack spacing={2}>
-        <Box rounded="lg" overflow="hidden" boxSize="full">
-          <Information>
-            <Heading fontSize="md" fontWeight="medium">
-              Information
-            </Heading>
-            <Box as="dl">
-              <Divider />
-              <HStack justify="space-between" fontSize="sm" fontWeight="medium" py={3}>
-                <Text as="dt" variant="supporting">
-                  Created by
-                </Text>
-                <Box as="dd">createdBy</Box>
-              </HStack>
-              <Divider />
-              <HStack justify="space-between" fontSize="sm" fontWeight="medium" py={3}>
-                <Text as="dt" variant="supporting">
-                  {data[0].media_type}
-                </Text>
-                <Box as="dd">teste</Box>
-              </HStack>
-            </Box>
-          </Information>
-        </Box>
-      </Stack>
+      <Information>
+        <Heading fontSize="md" fontWeight="medium">
+          More information
+        </Heading>
+      </Information>
+      <Information>
+        <HStack pt={24} justify="space-between">
+          <Text as="dt" variant="supporting" pr={12}>
+            Created by:
+          </Text>
+          <Text> NASA or National Aeronautics and Space Administration</Text>
+        </HStack>
+      </Information>
+      <Information>
+        <HStack pt={24} justify="space-between">
+          <Text as="dd" pr={12}>
+            Date created:
+          </Text>
 
-      <Stack spacing={2}>
-        <Information>
+          <Text as="dt" variant="supporting">
+            asdfas
+          </Text>
+        </HStack>
+      </Information>
+      <Information>
+        <Box pt={24}>
           <Heading fontSize="md" fontWeight="medium">
             Description
           </Heading>
-          <Text fontSize="sm">{data[0].description}</Text>
-        </Information>
-      </Stack>
+        </Box>
+        <Text fontSize="sm" p={20} pl={0}>
+          {data[0].description}
+        </Text>
+      </Information>
     </>
   );
 };
